@@ -18,3 +18,9 @@ composer install
 Zamień .env.sample na .env.local i zmień DATABASE_URL i DEFAULT_URI.
 
 Wykonaj migrację bazy danych poleceniem: php bin/console doctrine:migrations:migrate
+
+---
+
+## Zrzut bazy
+
+W razie potrzeby jest zrzut bazy danych z przykładowymi danymi w pliku sql_dump.sql
