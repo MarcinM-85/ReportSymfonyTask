@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class ReportAddType extends AbstractType
 {
@@ -36,11 +37,17 @@ class ReportAddType extends AbstractType
             ])
             ->add('exportDateTime', DateTimeType::class, [
                 'widget' => 'single_text',
+				'mapped' => false,
                 'label' => 'Data eksportu',
                 'attr' => [
                     'class' => '',
                     'data-datetimepicker' => '',
                     'placeholder' => 'Kliknij aby wybrać datę'
+                ],
+				'constraints' => [
+                    new NotBlank([
+                        'message' => 'Trzeba wybrać datę eksportu',
+                    ]),
                 ]
             ]);
     }

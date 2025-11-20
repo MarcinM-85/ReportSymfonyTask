@@ -59,7 +59,7 @@ class ReportController extends AbstractController
             $name = $reportForm->get('name')->getData();
             $user = $reportForm->get('user')->getData();
             $place = $reportForm->get('place')->getData();
-            $date = $reportForm->get('exportDateTime')->getData() ?: new DateTime("now");
+            $date = $reportForm->get('exportDateTime')->getData();
 
             $report = $reportService->addReport($name, $user, $place, $date);
 

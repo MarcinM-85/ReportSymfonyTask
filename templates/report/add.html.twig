@@ -31,7 +31,13 @@
                                 {% endif %}
                             </div>
                             
-                            {{ form_errors(field) }}
+                            {% if field.vars.errors is not empty %}
+								<div class="alert alert-warning">
+									{% for error in field.vars.errors %}
+										{{ error.message }}
+									{% endfor %}
+								</div>
+							{% endif %}
                         </div>
                     {% endfor %}
 
