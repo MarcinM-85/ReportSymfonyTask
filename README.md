@@ -6,7 +6,7 @@ Projekt zawiera moduł raportów, filtrowanie AJAX, formularze Symfony oraz klas
 ## Wymagania
 
 - PHP ≥ 8.2.12
-- Composer ≥ 2.0
+- Composer ≥ 2.8
 - MariaDB ≥ 10.4.32
 
 ---
