@@ -1,0 +1,5 @@
+@import "./all.css";
+
+select.form-control {
+    cursor: pointer;
+}

@@ -1,0 +1,32 @@
+<div class="table-responsive">
+    <table class="table table-striped table-hover align-middle">
+        <thead class="table-primary">
+            <tr>
+                <th scope="col">Nazwa</th>
+                <th scope="col">Data</th>
+                <th scope="col">Godzina</th>
+                <th scope="col">Użytkownik</th>
+                <th scope="col">Lokal</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if reportList is defined and reportList is not empty %}
+                {% for report in reportList %}
+                    <tr>
+                        <td>{{ report.name }}</td>
+                        <td>{{ report.getExportDate() }}</td>
+                        <td>{{ report.getExportTime() }}</td>
+                        <td>{{ report.user.name }}</td>
+                        <td>{{ report.place.name }}</td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="5">
+                        <div class="alert alert-info text-center mb-0">Brak wyników</div>
+                    </td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>

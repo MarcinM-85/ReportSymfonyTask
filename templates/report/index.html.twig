@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
+
+{% block title %}Raport{% endblock %}
+
+{% block header %}
+    <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-3">
+        <h1 class="mb-0">Raport</h1>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card mb-4">
+                <div class="card-body">
+                    {{ form_start(filterForm, {'attr': {'data-report-form-filter': ''}}) }}
+                        {% for field in filterForm %}
+                            <div class="mb-3">
+                                <div class="input-group">
+{#                                    {{ form_label(field, null, {'label_attr': {'class': 'form-label'}}) }}#}
+                                    {{ form_widget(field, {'attr': {'class': ("#{field.vars.attr.class|default('')} form-control")}}) }}
+                                    <span class="input-group-text">
+                                        <i class="fa-solid fa-chevron-down"></i>
+                                    </span>
+                                </div>
+                                {{ form_errors(field) }}
+                            </div>
+                        {% endfor %}
+                        <div class="d-grid">
+                            <button class="btn btn-secondary">Zatwierdź</button>
+                        </div>
+                    {{ form_end(filterForm) }}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div data-report-list>
+                {% include 'report/_list.html.twig' with { reportList: reportList } %}
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="/js/report.js"></script>
+{% endblock %}

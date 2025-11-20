@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Raport - Dodawanie{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h1 class="mb-0">{{ 'Dodaj nowy raport' }}</h1>
+                    <a href="{{ path('report_index') }}" class="btn btn-outline-secondary">{{ 'Powrót' }}</a>
+                </div>
+
+                {{ form_start(reportForm) }}
+
+                    {% for field in reportForm %}
+                        <div class="mb-3">
+                            {{ form_label(field, null, {'label_attr': {'class': 'form-label'}}) }}
+
+                            <div class="input-group">
+                                {{ form_widget(field, {'attr': {'class': ("#{field.vars.attr.class|default('')} form-control")}}) }}
+
+                                {% if 'choice' in field.vars.block_prefixes %}
+                                    <span class="input-group-text">
+                                        <i class="fa-solid fa-chevron-down"></i>
+                                    </span>
+                                {% elseif 'datetime' in field.vars.block_prefixes %}
+                                    <span class="input-group-text">
+                                        <i class="fa-solid fa-calendar"></i>
+                                    </span>
+                                {% endif %}
+                            </div>
+                            
+                            {{ form_errors(field) }}
+                        </div>
+                    {% endfor %}
+
+                    <div class="d-grid">
+                        <button class="btn btn-secondary">
+                            {{ 'Dodaj' }}
+                        </button>
+                    </div>
+
+                {{ form_end(reportForm) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
